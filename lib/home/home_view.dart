@@ -4,6 +4,7 @@ import 'package:effective_mobile_russia_test/home/home_controller.dart';
 import 'package:effective_mobile_russia_test/home/home_model.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import '../helpers/network_manager.dart';
@@ -36,7 +37,8 @@ class _HomeViewState extends State<HomeView> {
         Provider.of<EffectiveMobileRussiaTestProvider>(context, listen: false);
 
     if (widget.homeViewData.autoScrollController.position.pixels ==
-        widget.homeViewData.autoScrollController.position.maxScrollExtent && !widget.homeViewData.noInternet) {
+            widget.homeViewData.autoScrollController.position.maxScrollExtent &&
+        !widget.homeViewData.noInternet) {
       effectiveMobileRussiaTestProvider.isLoading(true, 'Main View');
 
       await NetworkManager()
@@ -188,12 +190,22 @@ class _HomeViewState extends State<HomeView> {
                                                                         )
                                                                         .then((
                                                                           v1,
-                                                                        ) {
+                                                                        ) async {
                                                                           widget
                                                                               .homeViewData
                                                                               .newlyAddedToFavorites = widget
                                                                               .homeViewData
                                                                               .rickAndMortyCharacters[index];
+
+                                                                          await StorageManager()
+                                                                              .results(
+                                                                                'rickAndMortyCharactersFavorites',
+                                                                              )
+                                                                              .then((
+                                                                                value,
+                                                                              ) {
+                                                                                widget.homeViewData.favoriteRickAndMortyCharacters = value;
+                                                                              });
 
                                                                           effectiveMobileRussiaTestProvider.refresh(
                                                                             'Home List',
@@ -218,7 +230,15 @@ class _HomeViewState extends State<HomeView> {
                                                                           widget
                                                                               .homeViewData
                                                                               .rickAndMortyCharacters[index])
-                                                              ? Icon(Icons.star)
+                                                              ? Animate(
+                                                                  effects: [
+                                                                    FadeEffect(),
+                                                                    ScaleEffect(),
+                                                                  ],
+                                                                  child: Icon(
+                                                                    Icons.star,
+                                                                  ),
+                                                                )
                                                               : Icon(
                                                                   Icons
                                                                       .star_border,

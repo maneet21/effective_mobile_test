@@ -68,8 +68,8 @@ class _MainViewState extends State<MainView> {
                     ? widget.mainViewData.tabCurrentIndex
                     : widget.mainViewData.tabCurrentIndex,
                 selectedItemColor: Colors.black,
-                unselectedItemColor: Colors.grey,
-                backgroundColor: Colors.white,
+                unselectedItemColor: Colors.white,
+                backgroundColor: Colors.grey,
                 items: [
                   BottomNavigationBarItem(
                     label: 'Home',
