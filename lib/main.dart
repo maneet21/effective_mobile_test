@@ -1,7 +1,11 @@
 import 'package:effective_mobile_russia_test/effective_mobile_russia_test_provider.dart';
+import 'package:effective_mobile_russia_test/helpers/theme_manager.dart';
 import 'package:effective_mobile_russia_test/main%20/main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'helpers/globals.dart';
 
 void main() {
   runApp(
@@ -12,8 +16,33 @@ void main() {
   );
 }
 
-class EffectiveMobileRussiaTest extends StatelessWidget {
+class EffectiveMobileRussiaTest extends StatefulWidget {
   const EffectiveMobileRussiaTest({super.key});
+
+  @override
+  State<EffectiveMobileRussiaTest> createState() =>
+      _EffectiveMobileRussiaTestState();
+}
+
+class _EffectiveMobileRussiaTestState extends State<EffectiveMobileRussiaTest> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void themeData() async {
+    ThemeManager().navTabBar().then((v) {
+      navTabBarColor = v;
+    });
+
+    ThemeManager().backgroundColor().then((v) {
+      backgroundColor = v;
+    });
+
+    ThemeManager().listCell().then((v) {
+      listCellColor = v;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

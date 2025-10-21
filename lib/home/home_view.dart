@@ -1,4 +1,5 @@
 import 'package:effective_mobile_russia_test/effective_mobile_russia_test_provider.dart';
+import 'package:effective_mobile_russia_test/helpers/globals.dart';
 import 'package:effective_mobile_russia_test/helpers/storage_manager.dart';
 import 'package:effective_mobile_russia_test/home/home_controller.dart';
 import 'package:effective_mobile_russia_test/home/home_model.dart';
@@ -77,7 +78,7 @@ class _HomeViewState extends State<HomeView> {
                 effectiveMobileRussiaTestProvider,
                 child,
               ) => Container(
-                color: Colors.white,
+                color: backgroundColor,
                 child: ListView.separated(
                   controller: widget.homeViewData.autoScrollController,
 

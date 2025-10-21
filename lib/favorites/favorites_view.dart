@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:effective_mobile_russia_test/effective_mobile_russia_test_provider.dart';
 import 'package:effective_mobile_russia_test/favorites/favorites_controller.dart';
 import 'package:effective_mobile_russia_test/favorites/favorites_model.dart';
+import 'package:effective_mobile_russia_test/helpers/globals.dart';
 import 'package:effective_mobile_russia_test/helpers/storage_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class _FavoritesViewState extends State<FavoritesView> {
     final deviceWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      color: Colors.white,
+      color: backgroundColor,
       child: Consumer<EffectiveMobileRussiaTestProvider>(
         builder:
             (

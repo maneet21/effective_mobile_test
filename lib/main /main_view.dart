@@ -1,5 +1,6 @@
 import 'package:effective_mobile_russia_test/effective_mobile_russia_test_provider.dart';
 import 'package:effective_mobile_russia_test/favorites/favorites_controller.dart';
+import 'package:effective_mobile_russia_test/helpers/globals.dart';
 import 'package:effective_mobile_russia_test/home/home_controller.dart';
 import 'package:effective_mobile_russia_test/main%20/main_controller.dart';
 import 'package:effective_mobile_russia_test/main%20/main_model.dart';
@@ -45,7 +46,7 @@ class _MainViewState extends State<MainView> {
                       ? 'Home'
                       : 'Favorites',
                 ),
-                backgroundColor: Colors.grey,
+                backgroundColor: navTabBarColor,
               ),
               bottomNavigationBar: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
@@ -89,4 +90,3 @@ class _MainViewState extends State<MainView> {
     );
   }
 }
-//
