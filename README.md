@@ -3,7 +3,7 @@ Effective Mobile Russia Test Application
 Description
 - This application shows list of rick and morty characters
   from API -https://rickandmortyapi.com.
-- It has just two routes - Home and Favorites.
+- It has three routes - Main, Home and Favorites.
 - Main route contains the bottom navigation bar.
 - It uses the MVC design pattern.
 
