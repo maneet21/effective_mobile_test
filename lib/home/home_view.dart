@@ -93,7 +93,7 @@ class _HomeViewState extends State<HomeView> {
                       index: index,
                       child: Container(
                         height: 250,
-                        decoration: BoxDecoration(color: Colors.white),
+                        decoration: BoxDecoration(color: listCellColor),
                         child: Row(
                           children: [
                             Container(

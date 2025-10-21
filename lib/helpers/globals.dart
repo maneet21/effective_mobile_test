@@ -5,3 +5,4 @@ Color? navTabBarColor = Colors.white;
 
 Color? backgroundColor = Colors.white;
 Color listCellColor = Colors.white;
+bool isAppFirstLaunch = false;

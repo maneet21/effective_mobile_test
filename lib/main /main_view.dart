@@ -6,6 +6,7 @@ import 'package:effective_mobile_russia_test/main%20/main_controller.dart';
 import 'package:effective_mobile_russia_test/main%20/main_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainView extends StatefulWidget {
   final MainModel mainViewData;
@@ -47,6 +48,42 @@ class _MainViewState extends State<MainView> {
                       : 'Favorites',
                 ),
                 backgroundColor: navTabBarColor,
+                actions: [
+                  TextButton(
+                    onPressed: () async {
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+
+                      String currentTheme =
+                          prefs.getString('Theme Selected') ?? '';
+
+                      String newTheme = '';
+
+                      if (currentTheme == 'Light Theme') {
+                        newTheme = 'Dark Theme';
+
+                        prefs.setString('Theme Selected', newTheme);
+
+                        widget.mainController.showMyDialog(
+                          context.mounted ? context : context,
+                        );
+                      } else {
+                        newTheme = 'Light Theme';
+
+                        prefs.setString('Theme Selected', newTheme);
+
+                        widget.mainController.showMyDialog(
+                          context.mounted ? context : context,
+                        );
+                      }
+                    },
+                    child: Text(
+                      'Theme Change',
+
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    ),
+                  ),
+                ],
               ),
               bottomNavigationBar: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
@@ -68,9 +105,9 @@ class _MainViewState extends State<MainView> {
                     effectiveMobileRussiaTestProvider.refreshUI == 'Bottom Bar'
                     ? widget.mainViewData.tabCurrentIndex
                     : widget.mainViewData.tabCurrentIndex,
-                selectedItemColor: Colors.black,
-                unselectedItemColor: Colors.white,
-                backgroundColor: Colors.grey,
+                selectedItemColor: Colors.blue,
+                unselectedItemColor: Colors.black,
+                backgroundColor: navTabBarColor,
                 items: [
                   BottomNavigationBarItem(
                     label: 'Home',

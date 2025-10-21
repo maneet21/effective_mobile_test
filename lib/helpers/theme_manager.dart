@@ -18,9 +18,9 @@ class ThemeManager {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     if (prefs.getString('Theme Selected') == 'Light Theme') {
-      return Colors.grey;
+      return Colors.white;
     } else if (prefs.getString('Theme Selected') == 'Dark Theme') {
-      return Colors.black;
+      return Colors.grey;
     }
     return Colors.white;
   }
@@ -31,7 +31,7 @@ class ThemeManager {
     if (prefs.getString('Theme Selected') == 'Light Theme') {
       return Colors.white;
     } else if (prefs.getString('Theme Selected') == 'Dark Theme') {
-      return Colors.black;
+      return Colors.grey;
     }
 
     return Colors.white;

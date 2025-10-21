@@ -28,6 +28,23 @@ class _EffectiveMobileRussiaTestState extends State<EffectiveMobileRussiaTest> {
   @override
   void initState() {
     super.initState();
+
+    appData().then((v) {
+      themeData();
+    });
+  }
+
+  Future<void> appData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var isFirstLaunch = prefs.getBool('isAppFirstLaunch1') ?? true;
+
+    if (isFirstLaunch) {
+      prefs.setBool('isAppFirstLaunch1', false);
+      prefs.setString('Theme Selected', 'Light Theme');
+      isAppFirstLaunch = true;
+    } else {
+      isAppFirstLaunch = false;
+    }
   }
 
   void themeData() async {

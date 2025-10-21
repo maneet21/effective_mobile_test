@@ -53,7 +53,7 @@ class _FavoritesViewState extends State<FavoritesView> {
               itemBuilder: (context, index) {
                 return Container(
                   height: 250,
-                  decoration: BoxDecoration(color: Colors.white),
+                  decoration: BoxDecoration(color: listCellColor),
                   child: Row(
                     children: [
                       Container(
