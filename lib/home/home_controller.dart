@@ -30,10 +30,14 @@ class HomeController extends StatefulWidget {
       if (widget.homeViewData.noInternet) {
         /// from storage
         StorageManager().results('rickAndMortyCharacters').then((value) {
-
-
-
-          widget.homeViewData.rickAndMortyCharacters = value;
+          for (var i in value) {
+            if (!widget.homeViewData.rickAndMortyCharacters
+                .map((v) => v.name)
+                .toList()
+                .contains(i.name)) {
+              widget.homeViewData.rickAndMortyCharacters.add(i);
+            }
+          }
         });
 
         getPrefs().then((v) {
